@@ -59,6 +59,9 @@ $(document).ready(function(){
       // dancer.spazOut();
       console.log($(this).position());
     });
+
+
+
     window.dancers.push(dancer);
 
   });
@@ -67,7 +70,7 @@ $(document).ready(function(){
 
 
 
-  $(".addDancerButton").on("click", function(event){
+  $(".blinkyButton").on("click", function(event){
 
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
 
@@ -91,7 +94,7 @@ $(document).ready(function(){
 
   });
 
-  $(".slider").on("click", function(event){
+  $(".sliderButton").on("click", function(event){
 
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
 
@@ -108,9 +111,17 @@ $(document).ready(function(){
     $('body').append(dancer.$node);
 
     window.dancers.push(dancer);
+
+    setInterval(function(){
+      var hits = $(".slider").collision(".blinky")
+      if (hits.hasClass("blinky")){
+        dancer.$node.hide();
+      }
+    }, 100);
+
   });
 
-  $(".druggie").on("click", function(event){
+  $(".druggieButton").on("click", function(event){
 
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
 
