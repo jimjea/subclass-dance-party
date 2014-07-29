@@ -5,32 +5,32 @@ function hoverFn(){
   })
 };
 
-function squareDistance(node1, node2) {
-  var position1 = node1.position();
-  var position2 = node2.position();
-  var horDist = position1.left - position2.left;
-  var vertDist = position1.top - position2.top;
-  var relativeDistance = Math.pow(horDist, 2) + Math.pow(vertDist, 2);
-  return relativeDistance;
-};
+// function squareDistance(node1, node2) {
+//   var position1 = node1.position();
+//   var position2 = node2.position();
+//   var horDist = position1.left - position2.left;
+//   var vertDist = position1.top - position2.top;
+//   var relativeDistance = Math.pow(horDist, 2) + Math.pow(vertDist, 2);
+//   return relativeDistance;
+// };
 
-function closestNeighbour(array, targetNode) {
-  var base = targetNode.$node;
-  var currentShortestDistance;
-  var closestNeighbour =[];
-  for (var i = 0; i < array.length; i++) {
-    var comparisonNode = array[i].$node;
-    if (i === 0){
-      currentShortestDistance = squareDistance(base, comparisonNode);
-    };
-    var newDist = squareDistance(base, comparisonNode);
-    if (newDist <= currentShortestDistance){
-      currentShortestDistance = newDist
-      closestNeighbour = [currentShortestDistance, array[i]];
-    };
-  }
-  return closestNeighbour;
-};
+// function closestNeighbour(array, targetNode) {
+//   var base = targetNode.$node;
+//   var currentShortestDistance;
+//   var closestNeighbour =[];
+//   for (var i = 0; i < array.length; i++) {
+//     var comparisonNode = array[i].$node;
+//     if (i === 0){
+//       currentShortestDistance = squareDistance(base, comparisonNode);
+//     };
+//     var newDist = squareDistance(base, comparisonNode);
+//     if (newDist <= currentShortestDistance){
+//       currentShortestDistance = newDist
+//       closestNeighbour = [currentShortestDistance, array[i]];
+//     };
+//   }
+//   return closestNeighbour;
+// };
 
 
 $(document).ready(function(){
