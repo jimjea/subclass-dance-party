@@ -4,12 +4,13 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
+  background: url('src/images/tomorrowland.jpg');
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .druggie ,.addJumpyButton,.addDancerButton{
+.title, .druggie ,.slider,.addDancerButton{
   padding:5px 12px;
   float:right;
 }
@@ -24,4 +25,12 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+
+.lineup{
+  left:0 !important;
+}
+
+.move-dancer{
+  position:relative;
 }

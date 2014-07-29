@@ -31,7 +31,7 @@ $(document).ready(function(){
     window.dancers.push(dancer);
   });
 
-  $(".addJumpyButton").on("click", function(event){
+  $(".slider").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
      * buttons on index.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -93,7 +93,15 @@ $(document).ready(function(){
   });
 
   $(".lineUp").on("click", function(event){
-    showDancers(window.dancers);
+    console.log("line 96");
+    if ($(this).text() === "Line Up") {
+      console.log("line 97");
+      lineUp(window.dancers);
+      $(this).text("Go Play");
+    } else {
+      disperse(window.dancers);
+      $(this).text("Line Up");
+    }
   });
 });
 

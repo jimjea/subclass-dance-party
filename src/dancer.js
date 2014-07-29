@@ -23,3 +23,13 @@ makeDancer.prototype.setPosition = function(top, left){
   };
   this.$node.css(styleSettings);
 };
+
+makeDancer.prototype.setLeft = function(){
+  this.$node.addClass("lineup");
+};
+
+makeDancer.prototype.disperse = function(){
+  this.$node.removeClass("lineup");
+};
+
+

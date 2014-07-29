@@ -1,5 +1,11 @@
-  var showDancers = function(dancers) {
-    for (var i = 0; i < dancers.length; i++) {
-      console.log(dancers[i]);
-    }
+var lineUp = function(dancers) {
+  for (var i = 0; i < dancers.length; i++) {
+    dancers[i].setLeft();
   }
+};
+
+var disperse = function(dancers){
+  for (var i = 0; i < dancers.length; i++) {
+    dancers[i].disperse();
+  }
+};
