@@ -12,11 +12,7 @@ makeBlinkyDancer.prototype.oldStep = makeDancer.prototype.step;
 makeBlinkyDancer.prototype.step = function(){
     // makeDancer.prototype.step.call(this);
     this.oldStep();
-    this.$node.toggle();
+    this.$node;
 };
 
-// makeBlinkyDancer.prototype.setPosition = makeDancer.prototype.setPosition;
 
-
-
-new makeBlinkyDancer
