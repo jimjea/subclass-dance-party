@@ -16,6 +16,7 @@ Slider.prototype.step = function() {
     'left' : horzposition + 'px'
   };
 
-  this.$node.animate(borderStyle, 1000);
+  this.$node.animate(borderStyle, "8000");
   this.$node.addClass("moving-dancer")
-}
+};
+

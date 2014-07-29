@@ -14,5 +14,19 @@ makeBlinkyDancer.prototype.step = function(){
     this.oldStep();
     this.$node;
 };
+makeBlinkyDancer.prototype.spazOut = function() {
+  console.log("I am running on line 23");
+  this.oldStep();
+  var horzposition = $("body").width() * Math.random();
+  var vertposition = $("body").width() * Math.random();
+
+  var borderStyle = {
+    'top' : vertposition + 'px',
+    'left' : horzposition + 'px'
+  };
+
+  this.$node.animate(borderStyle, 500);
+  this.$node.addClass("moving-dancer")
+};
 
 

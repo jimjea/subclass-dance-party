@@ -1,5 +1,6 @@
 var Druggie = function(top, left, timeBetweenSteps) {
   makeDancer.apply(this, arguments);
+  this.$node.attr("id", "druggie")
 };
 
 Druggie.prototype = Object.create(makeDancer.prototype);

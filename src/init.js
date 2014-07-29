@@ -1,20 +1,46 @@
+function hoverFn(){
+  $(".dancer").mouseover(function(){
+    // $(this).text("what is Up");
+    console.log("hello world")
+  })
+};
+
+function squareDistance(node1, node2) {
+  var position1 = node1.position();
+  var position2 = node2.position();
+  var horDist = position1.left - position2.left;
+  var vertDist = position1.top - position2.top;
+  var relativeDistance = Math.pow(horDist, 2) + Math.pow(vertDist, 2);
+  return relativeDistance;
+};
+
+function closestNeighbour(array, targetNode) {
+  var base = targetNode.$node;
+  var currentShortestDistance;
+  var closestNeighbour =[];
+  for (var i = 0; i < array.length; i++) {
+    var comparisonNode = array[i].$node;
+    if (i === 0){
+      currentShortestDistance = squareDistance(base, comparisonNode);
+    };
+    var newDist = squareDistance(base, comparisonNode);
+    if (newDist <= currentShortestDistance){
+      currentShortestDistance = newDist
+      closestNeighbour = [currentShortestDistance, array[i]];
+    };
+  }
+  return closestNeighbour;
+};
+
+
 $(document).ready(function(){
   window.dancers = [];
-
+  //blinky dancer
+  //
+  //
+  //
   $(".addDancerButton").on("click", function(event){
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on index.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
 
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
 
     // get the maker function for the kind of dancer we're supposed to make
@@ -28,23 +54,45 @@ $(document).ready(function(){
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    $(".dancer").mouseover(function(){
+    // $(this).text("what is Up");
+      // dancer.spazOut();
+      console.log($(this).position());
+    });
     window.dancers.push(dancer);
+
+  });
+
+
+
+
+
+  $(".addDancerButton").on("click", function(event){
+
+    var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
+
+    // get the maker function for the kind of dancer we're supposed to make
+    var dancerMakerFunction = window[dancerMakerFunctionName];
+
+    // make a dancer with a random position
+
+    var dancer = new dancerMakerFunction(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(dancer.$node);
+    $(".dancer").mouseover(function(){
+    // $(this).text("what is Up");
+      // dancer.spazOut();
+      console.log($(this).position());
+    });
+    window.dancers.push(dancer);
+
   });
 
   $(".slider").on("click", function(event){
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on index.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
 
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
 
     // get the maker function for the kind of dancer we're supposed to make
@@ -58,23 +106,11 @@ $(document).ready(function(){
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+
     window.dancers.push(dancer);
   });
 
   $(".druggie").on("click", function(event){
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on index.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
-
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
 
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
 
@@ -89,6 +125,8 @@ $(document).ready(function(){
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+
+
     window.dancers.push(dancer);
   });
 
@@ -103,5 +141,8 @@ $(document).ready(function(){
       $(this).text("Line Up");
     }
   });
+
+
+
 });
 
